@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aportes Gratuitos para el Sistema de GestiÃ³n de Seguridad y Salud en 
+	el Trabajo | AsociaciÃ³n ProtecciÃ³n Civil PerÃº</title>
+
+    <meta name="description" content="Aportes gratuitos, aplicaciones y modelos de documentos para elaborar y actualizar el Sistema de GestiÃ³n de Seguridad y Salud en el Trabajo. AsociaciÃ³n ProtecciÃ³n Civil PerÃº.">
+
+    <meta name="keywords" content="Seguridad y Salud en el Trabajo, SGSST, Ley 29783, SUNAFIL, matriz de riesgos, mapa de riesgos, plan anual de seguridad, documentos SST, PerÃº">
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #e8eef3;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* ENCABEZADO */
+        header {
+            background: #12355b;
+            color: white;
+            text-align: center;
+            padding: 25px 15px 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.20);
+        }
+
+        header h1 {
+            margin: 0 0 15px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        header img {
+            max-width: 160px;
+            height: auto;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .contenedor {
+            width: 92%;
+            max-width: 1050px;
+            margin: 35px auto;
+        }
+
+        /* TARJETA PRINCIPAL */
+        .contenido {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.10);
+        }
+
+        .titulo {
+            text-align: center;
+            color: #12355b;
+            font-size: 30px;
+            margin: 0 0 15px;
+            line-height: 1.3;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: #555555;
+            font-size: 17px;
+            max-width: 850px;
+            margin: 0 auto 30px;
+        }
+
+        /* AVISO */
+        .aviso {
+            background: #eaf4ff;
+            border-left: 5px solid #1677c8;
+            padding: 18px 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .aviso strong {
+            color: #12355b;
+        }
+
+        /* LISTA DE DOCUMENTOS */
+        .documentos {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .documento {
+            border: 1px solid #d8dee5;
+            border-radius: 9px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            background: #fafbfc;
+            transition: all 0.2s ease;
+        }
+
+        .documento:hover {
+            border-color: #1677c8;
+            background: #f3f9ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .documento-info {
+            flex: 1;
+        }
+
+        .documento-titulo {
+            font-size: 18px;
+            font-weight: bold;
+            color: #12355b;
+            margin-bottom: 4px;
+        }
+
+        .documento-descripcion {
+            font-size: 15px;
+            color: #666666;
+        }
+
+        /* BOTÃ“N DOCUMENTO */
+        .boton-documento {
+            display: inline-block;
+            background: #1677c8;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 17px;
+            border-radius: 6px;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: background 0.2s ease;
+        }
+
+        .boton-documento:hover {
+            background: #0d5f9f;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        /* INFORMACIÃ“N FINAL */
+        .informacion-final {
+            margin-top: 35px;
+            padding: 22px;
+            background: #fff8e6;
+            border-left: 5px solid #f0ad00;
+            border-radius: 5px;
+        }
+
+        .informacion-final h3 {
+            margin-top: 0;
+            color: #8a6200;
+        }
+
+        /* BOTONES DE NAVEGACIÃ“N */
+        .botones {
+            text-align: center;
+            margin: 30px 0 10px;
+        }
+
+        .boton {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 22px;
+            margin: 7px;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .boton:hover {
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        .boton-regreso {
+            background: #1677c8;
+        }
+
+        .boton-regreso:hover {
+            background: #0d5f9f;
+        }
+
+        .boton-whatsapp {
+            background: #25D366;
+        }
+
+        .boton-whatsapp:hover {
+            background: #1da851;
+        }
+
+        .boton-whatsapp img {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* PIE DE PÃGINA */
+        footer {
+            text-align: center;
+            color: #777777;
+            font-size: 14px;
+            padding: 20px 15px 30px;
+        }
+
+        /* CELULARES */
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 22px;
+            }
+
+            .contenedor {
+                width: 95%;
+                margin: 20px auto;
+            }
+
+            .contenido {
+                padding: 22px 17px;
+            }
+
+            .titulo {
+                font-size: 24px;
+            }
+
+            .subtitulo {
+                font-size: 16px;
+            }
+
+            .documento {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+
+            .boton-documento {
+                text-align: center;
+                width: 100%;
+            }
+
+            .boton {
+                width: 100%;
+                margin: 6px 0;
+            }
+        }
+    .auto-style2 {
+	color: #FF0000;
+}
+.auto-style3 {
+	text-align: center;
+	color: #008080;
+	font-size: 16px;
+	max-width: 850px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	margin-bottom: 30px;
+}
+.auto-style4 {
+	background-color: #FFFFFF;
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+
+        <h1>Asociaci<span lang="es-mx">ó</span>n Protecci<span lang="es-mx">ó</span>n 
+		Civil Per<span lang="es-mx">ú</span></h1>
+
+        <img
+            src="LogoAPCPtransp.gif"
+            alt="Logo AsociaciÃ³n ProtecciÃ³n Civil PerÃº"
+            height="96"
+            width="126"
+        >
+
+    </header>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenedor">
+
+        <section class="contenido">
+
+            <h2 class="titulo">
+                <span class="auto-style2">Aportes Gratuitos para
+				<span lang="es-mx">las elaboración de </span>su<span lang="es-mx">s<br>
+				&nbsp;Documentos de Gestión Educativa</span></span>
+            </h2>
+
+            <p class="auto-style3">
+                <strong>Ponemos a disposici<span lang="es-mx">ó</span>n de 
+				nuestros visitantes algunas modelos de <span lang="es-mx">D</span>ocumentos<span lang="es-mx"> 
+				de Gestión Educativa<span class="auto-style4">; que </span></span>
+				pueden servir como referencia para elaborar y/o actualizar <span lang="es-mx">
+				sus propios d</span>ocumentos. </strong>
+            </p>
+
+
+            <!-- AVISO -->
+            <div class="aviso">
+
+                <strong>Informaci<span lang="es-mx">ó</span>n importante:</strong>
+
+                Estos <span lang="es-mx">modelos de </span>documentos se 
+				proporcionan gratuitamente como material de orientaci<span lang="es-mx">ó</span>n. 
+				Recomendamos <span lang="es-mx">
+				modificar los que sea necesario de acuerdo a las caracteristicas 
+				especiales de su Institución Educativa</span> y condiciones 
+				vigentes ante la autoridad correspondiente, incluyendo las <span lang="es-mx">
+				ultimas
+				</span>disposiciones <span lang="es-mx">del MINEDU</span>.
+
+            </div>
+
+
+            <!-- DOCUMENTOS -->
+            <div class="documentos">
+
+
+                <!-- AUTODIAGNÃ“STICO SGSST -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            &nbsp;Proyecto Educativo Institucional</div>
+
+                        <div class="documento-descripcion">
+                            <span lang="es-mx">Modelo de Proyecto Educativo 
+							Institucional</span>.
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/auto-diagnostico-sgsst.xlsx"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+
+                <!-- MODELO DE ACTAS -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            &nbsp;<span lang="es-mx">Plan Anual de Trabajo</span>
+                        </div>
+
+                        <div class="documento-descripcion">
+                            <span lang="es-mx">Modelo del Plan Anual de Trabajo</span>.
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/modelo-actas-reuniones.docx"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+
+                <!-- PLAN ANUAL -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            &nbsp;<span lang="es-mx">Reglamento Interno</span>
+                        </div>
+
+                        <div class="documento-descripcion">
+                            <span lang="es-mx">Modelo de Reglamento Interno</span>.
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/plan-anual-sst.docx"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+
+                <!-- MAPAS DE RIESGO -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            &nbsp;Proyecto Curricular Institucional
+                        </div>
+
+                        <div class="documento-descripcion">
+                            <span lang="es-mx">Modelo de Proyecto Curricular 
+							Institucional</span>.
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/mapas-de-riesgo.pdf"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+
+                <!-- MATRIZ DE RIESGO -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            &nbsp;<span lang="es-mx">Normas de Convivencia</span>
+                        </div>
+
+                        <div class="documento-descripcion">
+                            <span lang="es-mx">Modelo de Normas de Convivencia</span>.
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/matriz-de-riesgos.pdf"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+
+                <!-- MATRIZ DE CUMPLIMIENTO LEGAL -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            &nbsp;<span lang="es-mx">Plan de Gestion de Riesgo 
+							de Desastres</span>
+                        </div>
+
+                        <div class="documento-descripcion">
+                            <span lang="es-mx">Modelo del Plan de Gestion de 
+							Riesgo de Desastres</span>.
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/matriz-cumplimiento-legal.pdf"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+
+                <!-- INVESTIGACIÃ“N DE ACCIDENTES -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            &nbsp;<span lang="es-mx">Libro de Registro de 
+							Incidencias</span>
+                        </div>
+
+                        <div class="documento-descripcion">
+                            <span lang="es-mx">Modelo de Libro de Registro de 
+							Incidencias</span>.
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/informe-investigacion-accidentes.pdf"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+
+                <!-- CÃ“DIGO DE CONDUCTA -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            &nbsp;<span lang="es-mx">Informe de Sustento sobre 
+							la Suficiencia del Personal Docente</span>
+                        </div>
+
+                        <div class="documento-descripcion">
+                            <span lang="es-mx">Modelo de&nbsp; <span>Informe de 
+							Sustento sobre la suficiencia del personal docente y 
+							pertinencia del perfil establecido, para las IE 
+							privadas.</span></span>
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/codigo-de-conducta.pdf"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- INFORMACIÃ“N FINAL -->
+            <div class="informacion-final">
+
+                <h3>¿Necesita orientaci<span lang="es-mx">ó</span>n?</h3>
+
+                <p>
+                    Si necesita mayor informaci<span lang="es-mx">ó</span>n 
+					sobre l<span lang="es-mx">o</span>s document<span lang="es-mx">os</span> 
+					que estamos presentando para 
+					<span lang="es-mx">ayudarlos a </span>elaborar y/o 
+					actualizar los documentos de Gesti<span lang="es-mx">ó</span>n
+                    <span lang="es-mx">Educativa</span>, puede comunicarse con 
+					nosotros.
+                </p>
+
+                <p>
+                    Nuestro objetivo es brindar informaci<span lang="es-mx">ó</span>n 
+					y orientaci<span lang="es-mx">ó</span>n para facilitar sus 
+					gestiones.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOTONES DE NAVEGACIÃ“N -->
+        <div class="botones">
+
+            <a
+                href="index.html"
+                class="boton boton-regreso"
+            >
+                &nbsp;Regresar a Inicio
+            </a>
+
+
+            <a
+                href="https://wa.me/51934883877"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="boton boton-whatsapp"
+            >
+
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                    alt="WhatsApp"
+                >
+
+                Contactar por WhatsApp
+
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- PIE DE PÃGINA -->
+    <footer>
+
+        AsociaciÃ³n ProtecciÃ³n Civil PerÃº
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>
