@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://marcoantonio2024.github.io/proteccioncivilperu/sitemap.xml
