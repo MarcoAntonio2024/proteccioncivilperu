@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autodiagnóstico SST 115 preguntas - Ley 29783</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
+        body{background:#0f1315;color:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh;}
+        .mobile-container{width:100%;max-width:375px;height:812px;background:#0f1315;border-radius:40px;border:8px solid #222b35;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.6);}
+        .content{padding:0 20px;flex-grow:1;display:flex;flex-direction:column;justify-content:center;overflow-y:auto;text-align:center;}
+        h1{font-size:22px;font-weight:700;line-height:1.25;margin-bottom:12px;}
+        p.description{font-size:13px;color:#9aa8b3;line-height:1.4;margin-bottom:20px;}
+        .card{background:#17212b;border:1px solid #23303d;border-radius:12px;padding:18px 16px;text-align:left;margin-bottom:20px;}
+        .card-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+        .status-dot{width:10px;height:10px;border-radius:50%;background:#2ccf6d;}
+        .card-title{font-size:13.5px;font-weight:700;}
+        .card-text{font-size:12.5px;color:#7f92a3;line-height:1.45;margin-bottom:16px;}
+        .btn-primary{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;background:#2b7d9b;color:#fff;text-decoration:none;padding:12px;border-radius:8px;font-size:13.5px;font-weight:600;border:none;cursor:pointer;}
+        .btn-primary:hover{background:#246a84;}
+        .btn-whatsapp{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#25d366;color:#fff;text-decoration:none;padding:12px;border-radius:10px;font-size:13.5px;font-weight:700;margin-top:10px;}
+        .btn-whatsapp svg{width:18px;height:18px;fill:#fff;}
+        .quiz-meta{font-size:11px;color:#2b7d9b;font-weight:700;text-transform:uppercase;margin-bottom:6px;text-align:left;}
+        .lineamiento-badge{background:#1e2d3b;color:#00d2ff;font-size:11px;font-weight:700;padding:6px 10px;border-radius:6px;text-align:left;margin-bottom:6px;border-left:3px solid #00d2ff;}
+        .quiz-question{font-size:13.5px;font-weight:600;line-height:1.45;margin-bottom:20px;text-align:left;min-height:80px;}
+        .quiz-options{display:flex;gap:10px;}
+        .btn-option{flex:1;padding:12px;border-radius:8px;border:none;font-weight:700;cursor:pointer;font-size:14px;}
+        .yes{background:#2ccf6d;color:#fff;} .no{background:#ff4d4d;color:#fff;}
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <div class="content" id="app">
+            <div style="text-align:center;margin-bottom:20px;"><img src="LogoAPCPtransp.gif" width="72" height="68" onerror="this.style.display='none'" alt="Logo"></div>
+            <h1>Autodiagnóstico SST<br>115 Preguntas</h1>
+            <p class="description">Ley N° 29783 - RM 050-2013-TR<br>Empresas con 20 o más trabajadores - Comité SST</p>
+            <div class="card">
+                <div class="card-header"><div class="status-dot"></div><div class="card-title">115 Preguntas Oficiales</div></div>
+                <div class="card-text">Diagnóstico de línea base según formato SUNAFIL RM 050-2013-TR. Evalúa 8 lineamientos obligatorios de la Ley 29783.</div>
+                <button class="btn-primary" onclick="startQuiz()">Comenzar Evaluación 115 Preguntas</button>
+            </div>
+            <div style="background:#131a22;border-left:3px solid #2b7d9b;padding:10px;border-radius:7px;font-size:11px;text-align:left;">RM 050-2013-TR / Ley N° 29783 - Formato obligatorio SUNAFIL para 20 o más trabajadores</div>
+        </div>
+    </div>
+    <script src="preguntas_compromiso.js"></script>
+    <script src="preguntas_politica.js"></script>
+    <script src="preguntas_planeamiento.js"></script>
+    <script src="preguntas_implementacion.js"></script>
+    <script src="preguntas_evaluacion.js"></script>
+    <script src="preguntas_medicion.js"></script>
+    <script src="preguntas_control.js"></script>
+    <script src="preguntas_revision.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
