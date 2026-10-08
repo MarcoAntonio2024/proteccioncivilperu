@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aportes Gratuitos para el Sistema de GestiÃ³n de Seguridad y Salud en 
+	el Trabajo | AsociaciÃ³n ProtecciÃ³n Civil PerÃº</title>
+
+    <meta name="description" content="Aportes gratuitos, aplicaciones y modelos de documentos para elaborar y actualizar el Sistema de GestiÃ³n de Seguridad y Salud en el Trabajo. AsociaciÃ³n ProtecciÃ³n Civil PerÃº.">
+
+    <meta name="keywords" content="Seguridad y Salud en el Trabajo, SGSST, Ley 29783, SUNAFIL, matriz de riesgos, mapa de riesgos, plan anual de seguridad, documentos SST, PerÃº">
+
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #e8eef3;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* ENCABEZADO */
+        header {
+            background: #12355b;
+            color: white;
+            text-align: center;
+            padding: 25px 15px 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.20);
+        }
+
+        header h1 {
+            margin: 0 0 15px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        header img {
+            max-width: 160px;
+            height: auto;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .contenedor {
+            width: 92%;
+            max-width: 1050px;
+            margin: 35px auto;
+        }
+
+        /* TARJETA PRINCIPAL */
+        .contenido {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.10);
+        }
+
+        .titulo {
+            text-align: center;
+            color: #12355b;
+            font-size: 30px;
+            margin: 0 0 15px;
+            line-height: 1.3;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: #555555;
+            font-size: 17px;
+            max-width: 850px;
+            margin: 0 auto 30px;
+        }
+
+        /* AVISO */
+        .aviso {
+            background: #eaf4ff;
+            border-left: 5px solid #1677c8;
+            padding: 18px 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .aviso strong {
+            color: #12355b;
+        }
+
+        /* LISTA DE DOCUMENTOS */
+        .documentos {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .documento {
+            border: 1px solid #d8dee5;
+            border-radius: 9px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            background: #fafbfc;
+            transition: all 0.2s ease;
+        }
+
+        .documento:hover {
+            border-color: #1677c8;
+            background: #f3f9ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .documento-info {
+            flex: 1;
+        }
+
+        .documento-titulo {
+            font-size: 18px;
+            font-weight: bold;
+            color: #12355b;
+            margin-bottom: 4px;
+        }
+
+        .documento-descripcion {
+            font-size: 15px;
+            color: #666666;
+        }
+
+        /* BOTÃ“N DOCUMENTO */
+        .boton-documento {
+            display: inline-block;
+            background: #1677c8;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 17px;
+            border-radius: 6px;
+            font-weight: bold;
+            white-space: nowrap;
+            transition: background 0.2s ease;
+        }
+
+        .boton-documento:hover {
+            background: #0d5f9f;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        /* INFORMACIÃ“N FINAL */
+        .informacion-final {
+            margin-top: 35px;
+            padding: 22px;
+            background: #fff8e6;
+            border-left: 5px solid #f0ad00;
+            border-radius: 5px;
+        }
+
+        .informacion-final h3 {
+            margin-top: 0;
+            color: #8a6200;
+        }
+
+        /* BOTONES DE NAVEGACIÃ“N */
+        .botones {
+            text-align: center;
+            margin: 30px 0 10px;
+        }
+
+        .boton {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 22px;
+            margin: 7px;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .boton:hover {
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        .boton-regreso {
+            background: #1677c8;
+        }
+
+        .boton-regreso:hover {
+            background: #0d5f9f;
+        }
+
+        .boton-whatsapp {
+            background: #25D366;
+        }
+
+        .boton-whatsapp:hover {
+            background: #1da851;
+        }
+
+        .boton-whatsapp img {
+            width: 22px;
+            height: 22px;
+        }
+
+        /* PIE DE PÃGINA */
+        footer {
+            text-align: center;
+            color: #777777;
+            font-size: 14px;
+            padding: 20px 15px 30px;
+        }
+
+        /* CELULARES */
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 22px;
+            }
+
+            .contenedor {
+                width: 95%;
+                margin: 20px auto;
+            }
+
+            .contenido {
+                padding: 22px 17px;
+            }
+
+            .titulo {
+                font-size: 24px;
+            }
+
+            .subtitulo {
+                font-size: 16px;
+            }
+
+            .documento {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+
+            .boton-documento {
+                text-align: center;
+                width: 100%;
+            }
+
+            .boton {
+                width: 100%;
+                margin: 6px 0;
+            }
+        }
+    .auto-style2 {
+	color: #FF0000;
+}
+.auto-style3 {
+	text-align: center;
+	color: #008080;
+	font-size: 16px;
+	max-width: 850px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	margin-bottom: 30px;
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+
+        <h1>Asociaci<span lang="es-mx">ó</span>n Protecci<span lang="es-mx">ó</span>n 
+		Civil Per<span lang="es-mx">ú</span></h1>
+
+        <img
+            src="LogoAPCPtransp.gif"
+            alt="Logo AsociaciÃ³n ProtecciÃ³n Civil PerÃº"
+            height="96"
+            width="126"
+        >
+
+    </header>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenedor">
+
+        <section class="contenido">
+
+            <h2 class="titulo">
+                <span class="auto-style2">Aportes Gratuitos para su Sistema de 
+				Gesti<span lang="es-mx">ó</span>n de Seguridad y Salud en el 
+				Trabajo</span>
+            </h2>
+
+            <p class="auto-style3">
+                <strong>Ponemos a disposici<span lang="es-mx">ó</span>n de 
+				nuestros visitantes algunas aplicaciones y modelos de documentos 
+				que pueden servir como referencia para elaborar y/o actualizar 
+				los documentos del Sistema de Gesti<span lang="es-mx">ó</span>n 
+				de Seguridad y Salud en el Trabajo.
+            	</strong>
+            </p>
+
+
+            <!-- AVISO -->
+            <div class="aviso">
+
+                <strong>Informaci<span lang="es-mx">ó</span>n importante:</strong>
+
+                Estos documentos y aplicaciones se proporcionan gratuitamente 
+				como material de orientaci<span lang="es-mx">ó</span>n. 
+				Recomendamos verificar los requisitos y condiciones vigentes 
+				ante la autoridad correspondiente, incluyendo las disposiciones 
+				aplicables de SUNAFIL.
+
+            </div>
+
+
+            <!-- DOCUMENTOS -->
+            <div class="documentos">
+
+
+                
+                <!-- AUTODIAGNÓSTICO SGSST - SELECTOR DE REGIMEN RM 050 / RM 085 - CORREGIDO -->
+                <div class="documento" style="border:2px solid #1677c8; background:linear-gradient(135deg, #f0f8ff 0%, #ffffff 100%);">
+                    <div class="documento-info">
+                        <div class="documento-titulo">
+                            &nbsp;Auto Diagnostico SGSST - Aplicativo Interactivo
+                        </div>
+                        <div class="documento-descripcion">
+                            <strong style="color:#12355b;">Seleccione el regimen segun el numero de trabajadores:</strong><br>
+                            - <strong>20 o mas trabajadores:</strong> RM 050-2013-TR - 115 preguntas (Regimen General - Comite SST)<br>
+                            - <strong>Menos de 20 trabajadores:</strong> RM 085-2013-TR - 20 preguntas (Regimen Simplificado MYPE - Supervisor SST - SUNAFIL)<br><br>
+                            <em>Aplicacion interactiva con calculo automatico de % de cumplimiento y reporte de brechas segun Ley 29783</em>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:10px; min-width:230px;">
+                        <a href="SGSST.html" class="boton-documento" style="background:#12355b; text-align:center; padding:12px;" target="_blank" rel="noopener noreferrer">
+                            20 o mas trabajadores - 115 preg. General
+                        </a>
+                        <a href="sgsst_simplificado20.html" class="boton-documento" style="background:#00a86b; text-align:center; padding:12px;" target="_blank" rel="noopener noreferrer">
+                            Menos de 20 trab. - 20 preg. Simplificado MYPE
+                        </a>
+                        <button onclick="abrirModalRegimen()" class="boton-documento" style="background:#f0ad00; color:#000; border:none; cursor:pointer; text-align:center; padding:8px;">
+                            Cual elegir?
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- MODELO DE ACTAS -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            &nbsp;Modelo de Actas de Reuniones
+                        </div>
+
+                        <div class="documento-descripcion">
+                            Documento en Word con modelos de <span lang="es-mx">
+							A</span>ctas para las <span lang="es-mx">R</span>euniones 
+							del Comit<span lang="es-mx">é</span> de Seguridad y 
+							Salud en el Trabajo correspondientes a un per<span lang="es-mx">í</span>odo 
+							de un a<span lang="es-mx">ño</span>.
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/modelo-actas-reuniones.docx"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+
+                <!-- PLAN ANUAL -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            &nbsp;Plan Anual de Seguridad y Salud en el Trabajo
+                        </div>
+
+                        <div class="documento-descripcion">
+                            Documento en Word con un modelo de Plan Anual de 
+							Seguridad y Salud en el Trabajo.
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/plan-anual-sst.docx"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+
+                <!-- MAPAS DE RIESGO -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            &nbsp;Mapas de Riesgo
+                        </div>
+
+                        <div class="documento-descripcion">
+                            Documento en PDF con un modelo de Mapas de Riesgo 
+							como referencia para la gesti<span lang="es-mx">ó</span>n 
+							de Seguridad y Salud en el Trabajo.
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/mapas-de-riesgo.pdf"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+
+                <!-- MATRIZ DE RIESGO -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            &nbsp;Matriz de Riesgos
+                        </div>
+
+                        <div class="documento-descripcion">
+                            Documento en PDF con un modelo de Matriz de Riesgos 
+							como referencia para la <span lang="es-mx">G</span>esti<span lang="es-mx">ó</span>n 
+							de Seguridad y Salud en el Trabajo.
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/matriz-de-riesgos.pdf"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+
+                <!-- MATRIZ DE CUMPLIMIENTO LEGAL -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            &nbsp;Matriz de Cumplimiento Legal
+                        </div>
+
+                        <div class="documento-descripcion">
+                            Documento en PDF con un modelo de Matriz de 
+							Cumplimiento Legal aplicable al Sistema de Gesti<span lang="es-mx">ó</span>n 
+							de Seguridad y Salud en el Trabajo.
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/matriz-cumplimiento-legal.pdf"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+
+                <!-- INVESTIGACIÃ“N DE ACCIDENTES -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            &nbsp;Informe de Investigaci<span lang="es-mx">ó</span>n 
+							de Accidentes
+                        </div>
+
+                        <div class="documento-descripcion">
+                            Documento en PDF con un modelo de Informe de 
+							Investigaci<span lang="es-mx">ó</span>n de 
+							Accidentes de Trabajo.
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/informe-investigacion-accidentes.pdf"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+
+                <!-- CÃ“DIGO DE CONDUCTA -->
+                <div class="documento">
+
+                    <div class="documento-info">
+
+                        <div class="documento-titulo">
+                            <span lang="es-mx">Có</span>digo de Conducta
+                        </div>
+
+                        <div class="documento-descripcion">
+                            Documento en PDF con un modelo de C<span lang="es-mx">ó</span>digo 
+							de Conducta para su adaptaci<span lang="es-mx">ó</span>n 
+							a las necesidades de la empresa o instituci<span lang="es-mx">ó</span>n.
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="documentos/codigo-de-conducta.pdf"
+                        class="boton-documento"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Ver / Descargar
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- INFORMACIÃ“N FINAL -->
+            <div class="informacion-final">
+
+                <h3>¿Necesita orientaci<span lang="es-mx">ó</span>n?</h3>
+
+                <p>
+                    Si necesita mayor informaci<span lang="es-mx">ó</span>n 
+					sobre las aplicaciones y documentaci<span lang="es-mx">ó</span>n 
+					que estamos presentando para elaborar y/o actualizar los 
+					documentos del Sistema de Gesti<span lang="es-mx">ó</span>n 
+					de Seguridad y Salud en el Trabajo, puede comunicarse con 
+					nosotros.
+                </p>
+
+                <p>
+                    Nuestro objetivo es brindar informaci<span lang="es-mx">ó</span>n 
+					y orientaci<span lang="es-mx">ó</span>n para facilitar sus 
+					gestiones.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOTONES DE NAVEGACIÃ“N -->
+        <div class="botones">
+
+            <a
+                href="index.html"
+                class="boton boton-regreso"
+            >
+                â† Regresar a Inicio
+            </a>
+
+
+            <a
+                href="https://wa.me/51934883877"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="boton boton-whatsapp"
+            >
+
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                    alt="WhatsApp"
+                >
+
+                Contactar por WhatsApp
+
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- PIE DE PÃGINA -->
+    <footer>
+
+        AsociaciÃ³n ProtecciÃ³n Civil PerÃº
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+
+<!-- MODAL SELECTOR DE REGIMEN SGSST - AGREGADO -->
+<style>
+.modal-regimen { display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; }
+.modal-regimen.active { display:flex; }
+.modal-content-regimen { background:#fff; border-radius:12px; padding:30px; max-width:500px; width:90%; box-shadow:0 10px 30px rgba(0,0,0,0.3); text-align:center; }
+.modal-content-regimen h3 { color:#12355b; margin-top:0; font-size:22px; }
+.btn-regimen { display:block; width:100%; padding:14px; margin:10px 0; border-radius:8px; text-decoration:none; font-weight:bold; color:#fff; font-size:15px; }
+.btn-regimen.general { background:#12355b; } .btn-regimen.simplificado { background:#00a86b; }
+.btn-regimen:hover { opacity:0.9; color:#fff; text-decoration:none; }
+</style>
+<div id="modalRegimen" class="modal-regimen" onclick="if(event.target==this) cerrarModalRegimen()">
+  <div class="modal-content-regimen">
+    <h3>¿Qué régimen le corresponde?</h3>
+    <p style="color:#555; font-size:14px; margin-bottom:20px;">Según RM 050-2013-TR y RM 085-2013-TR (SUNAFIL)</p>
+    <a href="SGSST.html" class="btn-regimen general" target="_blank">🏢 20 o más trabajadores<br><small>115 preguntas - RM 050</small></a>
+    <a href="sgsst_simplificado20.html" class="btn-regimen simplificado" target="_blank">🏪 Menos de 20 trabajadores<br><small>20 preguntas - RM 085 MYPE</small></a>
+    <button onclick="cerrarModalRegimen()" style="margin-top:15px; background:#e0e0e0; border:none; padding:8px 20px; border-radius:6px; cursor:pointer;">Cerrar</button>
+  </div>
+</div>
+<script>function abrirModalRegimen(){document.getElementById('modalRegimen').classList.add('active');}function cerrarModalRegimen(){document.getElementById('modalRegimen').classList.remove('active');}</script>
+
+</body>
+</html>
