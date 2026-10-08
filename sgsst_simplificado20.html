@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGSST Simplificado 20 - RM 085-2013-TR</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif;}
+body{background:#0f1315;color:#fff;display:flex;justify-content:center;align-items:center;min-height:100vh;}
+.mobile-container{width:100%;max-width:375px;height:812px;background:#0f1315;border-radius:40px;border:8px solid #222b35;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.6);}
+.content{padding:0 20px;flex-grow:1;display:flex;flex-direction:column;justify-content:center;overflow-y:auto;}
+h1{font-size:20px;font-weight:700;line-height:1.25;margin-bottom:12px;text-align:center;}
+.btn-primary{display:flex;justify-content:center;width:100%;background:#2b7d9b;color:#fff;padding:12px;border-radius:8px;font-size:13.5px;font-weight:600;border:none;cursor:pointer;}
+.btn-whatsapp{display:flex;justify-content:center;gap:8px;width:100%;background:#25d366;color:#fff;padding:12px;border-radius:10px;font-size:13.5px;font-weight:700;margin-top:10px;text-decoration:none;}
+.quiz-meta{font-size:11px;color:#2b7d9b;font-weight:700;text-transform:uppercase;margin-bottom:6px;text-align:left;}
+.lineamiento-badge{background:#1e2d3b;color:#00d2ff;font-size:11px;font-weight:700;padding:6px 10px;border-radius:6px;text-align:left;margin-bottom:6px;border-left:3px solid #00d2ff;}
+.quiz-question{font-size:13.5px;font-weight:600;line-height:1.45;margin-bottom:8px;text-align:left;}
+.quiz-base{font-size:10px;color:#7f92a3;text-align:left;margin-bottom:16px;font-style:italic;}
+.quiz-options{display:flex;gap:10px;}
+.btn-option{flex:1;padding:12px;border-radius:8px;border:none;font-weight:700;cursor:pointer;font-size:14px;}
+.yes{background:#2ccf6d;color:#fff;} .no{background:#ff4d4d;color:#fff;}
+</style></head><body><div class="mobile-container"><div class="content" id="app"></div></div>
+<script>
+const todasLasPreguntas = [{"categoria": "1. Organización y Estructura", "pregunta": "¿Se ha elegido e instalado formalmente un Supervisor de SST mediante votación secreta y directa de los trabajadores?", "base": "Ley N° 29783, Art. 29 y 30 / D.S. 005-2012-TR, Art. 39-41"}, {"categoria": "1. Organización y Estructura", "pregunta": "¿Existe un acta de constitución e instalación del Supervisor de SST debidamente firmada?", "base": "D.S. 005-2012-TR, Art. 42 y 43"}, {"categoria": "1. Organización y Estructura", "pregunta": "¿Se facilita al Supervisor de SST la ejecución de sus funciones y se le otorgan facilidades (licencias o tiempo)?", "base": "Ley N° 29783, Art. 32 / D.S. 005-2012-TR, Art. 46"}, {"categoria": "1. Organización y Estructura", "pregunta": "¿Se cuenta con una lista actualizada de los trabajadores y sus puestos de trabajo correspondientes?", "base": "D.S. 005-2012-TR, Art. 26"}, {"categoria": "2. Política y Objetivos", "pregunta": "¿Existe una Política del SG-SST redactada de forma específica para la organización, firmada por el empleador?", "base": "Ley N° 29783, Art. 22 y 23 / D.S. 005-2012-TR, Art. 25"}, {"categoria": "2. Política y Objetivos", "pregunta": "¿La Política de SST se encuentra exhibida en un lugar visible de la empresa y ha sido difundida a los trabajadores?", "base": "Ley N° 29783, Art. 22 / R.M. 050-2013-TR"}, {"categoria": "3. Planificación e IPERC", "pregunta": "¿Se ha elaborado una matriz IPERC (Identificación de Peligros, Evaluación de Riesgos y Controles) por cada puesto de trabajo?", "base": "Ley N° 29783, Art. 19 y 57 / D.S. 005-2012-TR, Art. 77"}, {"categoria": "3. Planificación e IPERC", "pregunta": "¿La matriz IPERC ha sido revisada o actualizada por lo menos una vez al año con participación del Supervisor de SST?", "base": "Ley N° 29783, Art. 57 / R.M. 050-2013-TR"}, {"categoria": "3. Planificación e IPERC", "pregunta": "¿Se han establecido objetivos y metas medibles de SST alineados a los peligros críticos identificados en la empresa?", "base": "D.S. 005-2012-TR, Art. 25 y 80"}, {"categoria": "4. Capacitaciones", "pregunta": "¿Se ejecutan y programan como mínimo cuatro (4) capacitaciones al año en materia de SST para todos los trabajadores?", "base": "Ley N° 29783, Art. 35 inc. b)"}, {"categoria": "4. Capacitaciones", "pregunta": "¿Las capacitaciones son realizadas por profesionales competentes y quedan registradas con la firma de los asistentes?", "base": "Ley N° 29783, Art. 36 / D.S. 005-2012-TR, Art. 27"}, {"categoria": "5. Salud Ocupacional", "pregunta": "¿Se programan y realizan Exámenes Médicos Ocupacionales (EMO) a los trabajadores cada 2 años (o anual si es alto riesgo)?", "base": "Ley N° 29783, Art. 49 inc. d) / Ley N° 31246 / D.S. 005-2012-TR, Art. 101"}, {"categoria": "5. Salud Ocupacional", "pregunta": "¿Se mantiene la confidencialidad de los resultados médicos de los trabajadores de acuerdo a ley?", "base": "D.S. 005-2012-TR, Art. 102 / R.M. 312-2011-MINSA"}, {"categoria": "6. Respuesta a Emergencias", "pregunta": "¿La empresa cuenta con un Plan de Respuesta a Emergencias y Contingencias adecuado a su infraestructura?", "base": "Ley N° 29783, Art. 47 / D.S. 005-2012-TR, Art. 83"}, {"categoria": "6. Respuesta a Emergencias", "pregunta": "¿Se dispone de extintores vigentes, señalización de evacuación y botiquín de primeros auxilios abastecido?", "base": "D.S. 005-2012-TR, Art. 83 / NTP 399.010-1"}, {"categoria": "6. Respuesta a Emergencias", "pregunta": "¿Se realizan simulacros periódicos para entrenar al personal ante sismos, incendios u otras emergencias?", "base": "D.S. 005-2012-TR, Art. 83"}, {"categoria": "7. Registros Simplificados", "pregunta": "¿Se cuenta con el Registro Simplificado de accidentes de trabajo, enfermedades ocupacionales e incidentes peligrosos?", "base": "R.M. 085-2013-TR (Régimen Simplificado)"}, {"categoria": "7. Registros Simplificados", "pregunta": "¿Se lleva el Registro Simplificado de inspecciones internas de seguridad y salud en el trabajo?", "base": "R.M. 085-2013-TR (Régimen Simplificado)"}, {"categoria": "7. Registros Simplificados", "pregunta": "¿Se administra el Registro Simplificado de inducción, capacitación, entrenamiento y simulacros de emergencia?", "base": "R.M. 085-2013-TR (Régimen Simplificado)"}, {"categoria": "7. Registros Simplificados", "pregunta": "¿Los registros obligatorios se guardan y archivan por los plazos de ley (ej. 20 años para enfermedades ocupacionales)?", "base": "Ley N° 29783, Art. 28 / D.S. 005-2012-TR, Art. 35"}]
+;
+let indiceActual=0, respuestas=[];
+function iniciar(){indiceActual=0; respuestas=[]; renderizarPregunta();}
+function renderizarPregunta(){
+    const q = todasLasPreguntas[indiceActual];
+    const pct = (indiceActual / todasLasPreguntas.length)*100;
+    document.getElementById('app').innerHTML = `
+        <div style="text-align:center;margin:10px 0 12px;"><img src="LogoAPCPtransp.gif" width="72" height="68" onerror="this.style.display='none'" alt="Logo"></div>
+        <div style="background:#131a22;border-left:3px solid #00d2ff;padding:10px;border-radius:7px;margin-bottom:14px;font-size:11px;line-height:1.4;text-align:left;">
+            <strong>DIAGNOSTICO DE LINEA BASE - SG-SST (REGIMEN SIMPLIFICADO)</strong><br>
+            Evaluacion adaptada para empresas de hasta 20 trabajadores<br>
+            <strong>R.M. 085-2013-TR / Ley N° 29783</strong><br>
+            Formato simplificado obligatorio para MYPE segun SUNAFIL.
+        </div>
+        <div style="width:100%;background:#23303d;height:6px;border-radius:3px;margin-bottom:12px;overflow:hidden;"><div style="height:100%;width:${pct}%;background:#2b7d9b;"></div></div>
+        <div class="quiz-meta">Pregunta ${indiceActual+1} de ${todasLasPreguntas.length}</div>
+        <div class="lineamiento-badge">${q.categoria}</div>
+        <div class="quiz-question">${q.pregunta}</div>
+        <div class="quiz-base">${q.base}</div>
+        <div class="quiz-options"><button class="btn-option yes" onclick="responder('SI')">SI</button><button class="btn-option no" onclick="responder('NO')">NO</button></div>
+        <div style="background:#555;color:#fff;padding:12px;border-radius:8px;margin-top:15px;font-size:11px;line-height:1.45;text-align:center;">Cumplir con las Normas de Seguridad y Salud en el Trabajo no es un simple tramite; es un Compromiso con la vida de nuestros trabajadores y la Clave para evitar sanciones severas por parte de SUNAFIL</div>
+    `;
+}
+function responder(v){respuestas.push({...todasLasPreguntas[indiceActual], respuesta:v}); indiceActual++; if(indiceActual < todasLasPreguntas.length) renderizarPregunta(); else mostrarResultado();}
+function mostrarResultado(){
+    const si = respuestas.filter(r=>r.respuesta==='SI').length;
+    const pct = ((si/todasLasPreguntas.length)*100).toFixed(1);
+    const nivel = pct>=80?'ALTO':pct>=50?'MEDIO':'BAJO';
+    const color = pct>=80?'#2ccf6d':pct>=50?'#f39c12':'#ff4d4d';
+    const brechas = respuestas.filter(r=>r.respuesta==='NO');
+    const html = brechas.length ? brechas.map((r,i)=>`<li><strong>${i+1}. [${r.categoria}]</strong><br>${r.pregunta}<br><em style='font-size:10px;color:#7f92a3;'>${r.base}</em></li>`).join('') : '<li>Excelente! No se detectaron brechas.</li>';
+    document.getElementById('app').innerHTML = `
+        <div style="text-align:center;margin-bottom:15px;"><img src="LogoAPCPtransp.gif" width="72" height="68" onerror="this.style.display='none'"></div>
+        <h1>Resultado Final - RM 085-2013-TR</h1>
+        <div style="font-size:42px;color:${color};margin:10px 0;text-align:center;">${pct}%</div>
+        <div style="background:#555;color:#fff;padding:9px 12px;border-radius:7px;margin:6px auto 8px;font-size:12px;font-weight:700;text-align:center;">Nivel ${nivel} - ${si}/20</div>
+        <div style="max-height:200px;overflow-y:auto;text-align:left;font-size:11.5px;color:#9aa8b3;background:#131a22;padding:10px;border-radius:8px;margin-bottom:15px;"><ul style="padding-left:16px;margin:0;">${html}</ul></div>
+        <button class="btn-primary" style="background:#7c5cff;margin-bottom:10px;" onclick="window.print()">Exportar PDF</button>
+        <button class="btn-primary" onclick="iniciar()">Reiniciar Evaluación</button>
+        <a href="AportesSGSST.html" style="display:flex;justify-content:center;gap:8px;width:100%;background:#12355b;color:#fff;padding:12px;border-radius:10px;font-size:13.5px;font-weight:700;margin-top:10px;text-decoration:none;text-align:center;">Volver</a>
+        <a href="autodiagnostico/prueba.html" style="display:flex;justify-content:center;gap:8px;width:100%;background:#6c757d;color:#fff;padding:12px;border-radius:10px;font-size:12px;font-weight:700;margin-top:10px;text-decoration:none;text-align:center;">Ver 115 preguntas</a>
+        <a href="https://wa.me/51934883877" target="_blank" class="btn-whatsapp">Asesoría WhatsApp</a>
+    `;
+}
+document.addEventListener('DOMContentLoaded', ()=>{
+    document.getElementById('app').innerHTML = `
+        <div style="text-align:center;margin-bottom:10px;opacity:0.7;font-size:10px;color:#7f92a3;">R.M. 085-2013-TR - Régimen Simplificado MYPE</div>
+        <div style="text-align:center;margin-bottom:20px;"><img src="LogoAPCPtransp.gif" width="72" height="68" onerror="this.style.display='none'"></div>
+        <h1>Autodiagnostico SST Simplificado</h1>
+        <p style="font-size:13px;color:#9aa8b3;text-align:center;margin-bottom:12px;">Empresas con menos de 20 trabajadores<br><strong>R.M. 085-2013-TR / Ley N° 29783</strong></p>
+        <div style="background:#17212b;border:1px solid #23303d;border-radius:12px;padding:18px 16px;text-align:left;margin-bottom:20px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><div style="width:10px;height:10px;border-radius:50%;background:#2ccf6d;"></div><div style="font-size:13.5px;font-weight:700;">20 Preguntas Oficiales MYPE</div></div>
+            <div style="font-size:12.5px;color:#7f92a3;line-height:1.45;margin-bottom:16px;">Diagnostico de linea base adaptado para pequena empresa segun RM 085-2013-TR. Incluye Supervisor SST, IPERC, capacitaciones, EMO y registros simplificados exigidos por SUNAFIL.</div>
+            <button class="btn-primary" onclick="iniciar()">Comenzar Evaluacion 20 Preguntas</button>
+        </div>
+        <div style="background:#131a22;border-left:3px solid #00d2ff;padding:10px;border-radius:7px;font-size:11px;text-align:left;">DIAGNOSTICO DE LINEA BASE - SG-SST (REGIMEN SIMPLIFICADO) - R.M. 085-2013-TR / Ley N° 29783 - Formato SUNAFIL para MYPE</div>
+    `;
+});
+</script></body></html>
