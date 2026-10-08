@@ -1,0 +1,599 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autodiagnóstico SST Ley 29783</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #0f1315;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Mockup Contenedor Móvil */
+        .mobile-container {
+            width: 100%;
+            max-width: 375px;
+            height: 812px;
+            background-color: #0f1315;
+            border-radius: 40px;
+            border: 8px solid #222b35;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        /* Barra de estado */
+        .status-bar {
+            height: 44px;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+            background-color: #0f1315;
+            z-index: 10;
+        }
+
+        /* Contenido principal */
+        .content {
+            padding: 0 20px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        /* Títulos */
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.25;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        p.description {
+            font-size: 13px;
+            color: #9aa8b3;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        /* Tarjeta de estado */
+        .card {
+            background-color: #17212b;
+            border: 1px solid #23303d;
+            border-radius: 12px;
+            padding: 18px 16px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #2ccf6d;
+        }
+
+        .card-title {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .card-text {
+            font-size: 12.5px;
+            color: #7f92a3;
+            line-height: 1.45;
+            margin-bottom: 16px;
+        }
+
+        /* Botones generales */
+        .btn-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            background-color: #2b7d9b;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #246a84;
+        }
+
+        /* Botón de WhatsApp */
+        .btn-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background-color: #25d366;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 13.5px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+            transition: transform 0.2s, background 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn-whatsapp svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
+        }
+
+        /* Componentes del Diagnóstico Móvil */
+        .progress-bar-container {
+            width: 100%;
+            background-color: #23303d;
+            height: 6px;
+            border-radius: 3px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #2b7d9b;
+            transition: width 0.3s ease;
+        }
+
+        .quiz-meta {
+            font-size: 11px;
+            color: #2b7d9b;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            text-align: left;
+        }
+
+        .lineamiento-badge {
+            background-color: #1e2d3b;
+            color: #00d2ff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 10px;
+            border-radius: 6px;
+            text-align: left;
+            margin-bottom: 6px;
+            border-left: 3px solid #00d2ff;
+        }
+
+        .sublineamiento-badge {
+            font-size: 10.5px;
+            color: #9aa8b3;
+            text-align: left;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .quiz-question {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.45;
+            margin-bottom: 20px;
+            text-align: left;
+            min-height: 80px;
+        }
+
+        .quiz-options {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .btn-option {
+            flex: 1;
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid #23303d;
+            background-color: #17212b;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-option.yes:hover {
+            background-color: #2ccf6d;
+            border-color: #2ccf6d;
+            color: #000;
+        }
+
+        .btn-option.no:hover {
+            background-color: #ff4d4d;
+            border-color: #ff4d4d;
+            color: #fff;
+        }
+
+        .score-badge {
+            font-size: 36px;
+            font-weight: 800;
+            color: #2ccf6d;
+            margin: 10px 0;
+        }
+
+        .brechas-list {
+            max-height: 180px;
+            overflow-y: auto;
+            text-align: left;
+            font-size: 11.5px;
+            color: #9aa8b3;
+            background: #131a22;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .brechas-list li {
+            margin-bottom: 8px;
+            list-style-type: square;
+            margin-left: 15px;
+        }
+
+        /* Menú Inferior (Tab Bar) */
+        .tab-bar {
+            height: 65px;
+            background-color: #131a22;
+            border-top: 1px solid #1e2936;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #5d6f7e;
+            text-decoration: none;
+            font-size: 10.5px;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .tab-item.active {
+            color: #2b7d9b;
+        }
+
+        .tab-icon-wrapper {
+            padding: 4px 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tab-item.active .tab-icon-wrapper {
+            background-color: rgba(43, 125, 155, 0.2);
+        }
+
+        .tab-item svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+    .auto-style2 {
+	font-family: "Segoe UI";
+}
+.auto-style3 {
+	font-family: "Segoe UI";
+	color: rgb(192, 192, 192);
+}
+.auto-style4 {
+	color: rgb(192, 192, 192);
+}
+    </style>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span id="lima-time" aria-label="Hora de Lima, Perú">--:--</span>
+            <span>📶 🔋</span>
+        </div>
+
+        <script>
+            function actualizarHoraLima() {
+                const reloj = document.getElementById('lima-time');
+                if (!reloj) return;
+
+                reloj.textContent = new Intl.DateTimeFormat('es-PE', {
+                    timeZone: 'America/Lima',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                }).format(new Date());
+            }
+
+            actualizarHoraLima();
+            setInterval(actualizarHoraLima, 1000);
+        </script>
+
+        <!-- Contenido principal -->
+        <div class="content">
+
+            <!-- VISTA 1: INICIO -->
+            <div id="view-start">
+                <div style="margin-bottom: 15px;">
+                    <img alt="Logo APCP" height="68" src="LogoAPCPtransp.gif" width="72" onerror="this.style.display='none'">
+                </div>
+                <h1>Autodiagnóstico SGSST<br>Ley 29783</h1>
+                <p class="description">
+				<span class="auto-style3" style="font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(19, 26, 34); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
+				Mediante la Resolución Ministerial N° 050-2013-TR, el M<span lang="es-mx">inisterio 
+				de Trabajo y Promocion del Empleo;</span> aprobó la lista de 
+				verificación de 115 preguntas para los </span>
+				<span class="auto-style4" style="font-family: Inter, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(19, 26, 34); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
+				<span class="auto-style2" lang="es-mx">08 </span></span>
+				<span class="auto-style3" style="font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(19, 26, 34); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
+				<span lang="es-mx">L</span>ineamientos del SGSST</span><span class="auto-style4" style="font-family: Inter, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(19, 26, 34); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span class="auto-style2" lang="es-mx">; 
+				Responde cada pregunta con honestidad y responsabilidad para 
+				evaluar correctamente el cumplimiento de la normatividad vigente 
+				del SGSST</span></span></p>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="status-dot"></span>
+                        <span class="card-title">Sin Evaluación Activa</span>
+                    </div>
+                    <p class="card-text">Tus respuestas permitirán calcular el resultado y la nota porcentual de tu autodiagnóstico.</p>
+                    <button class="btn-primary" onclick="startQuiz()">Comenzar Autodiagnóstico</button>
+                </div>
+
+                <p class="description" style="font-size:11.5px;">Al finalizar podrás revisar las brechas pendientes<span lang="es-mx"> 
+				e Imprimirlas en PDF; además podrás</span> solicitar orientación especializada.</p>
+
+                <a href="https://wa.me/51934883877" target="_blank" class="btn-whatsapp">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    </svg>
+                    Contacto por WhatsApp
+                </a>
+            </div>
+
+            <!-- VISTA 2: CUESTIONARIO -->
+            <div id="view-quiz" style="display: none;">
+                <div class="progress-bar-container">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+                <div id="quiz-meta" class="quiz-meta">Pregunta 1 de 115</div>
+                <div id="quiz-section" class="lineamiento-badge">I. COMPROMISO E INVOLUCRAMIENTO</div>
+                <div id="quiz-question" class="quiz-question">¿Cargando pregunta...?</div>
+
+                <div class="quiz-options">
+                    <button class="btn-option yes" onclick="answerQuestion(true)">SÍ</button>
+                    <button class="btn-option no" onclick="answerQuestion(false)">NO</button>
+                </div>
+            </div>
+
+            <!-- VISTA 3: RESULTADOS -->
+            <div id="view-results" style="display: none;">
+                <h1>Resultado Final</h1>
+                <div id="score-badge" class="score-badge">0%</div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <span id="result-dot" class="status-dot"></span>
+                        <span id="result-level" class="card-title">Calculando...</span>
+                    </div>
+                    <p id="result-text" class="card-text">Basado en las respuestas proporcionadas.</p>
+                </div>
+
+                <div style="text-align: left; font-size: 12px; font-weight: 700; margin-bottom: 6px; color: #ffffff;">Aspectos por mejorar (Brechas):</div>
+                <ul id="brechas-list" class="brechas-list"></ul>
+
+                <button class="btn-primary" onclick="startQuiz()">Reiniciar Evaluación</button>
+                
+                <a href="https://wa.me/51934883877" target="_blank" class="btn-whatsapp">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    </svg>
+                    Asesoría por WhatsApp
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Tab Bar de Navegación -->
+        <nav class="tab-bar">
+            <a onclick="showView('start')" class="tab-item active" id="tab-start">
+                <div class="tab-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                        <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                        <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+                        <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+                    </svg>
+                </div>
+                <span>Inicio</span>
+            </a>
+            <a onclick="startQuiz()" class="tab-item" id="tab-quiz">
+                <div class="tab-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"></path>
+                        <rect x="9" y="3" width="6" height="4" rx="1"></rect>
+                    </svg>
+                </div>
+                <span>Evaluar</span>
+            </a>
+            <a onclick="showView('results')" class="tab-item" id="tab-results">
+                <div class="tab-icon-wrapper">
+                    <svg viewBox="0 0 24 24">
+                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </div>
+                <span>Brechas</span>
+            </a>
+        </nav>
+    </div>
+
+    <script>
+        // BBDD con las 115 preguntas exactas extraídas del archivo pdf
+        
+        let currentIndex = 0;
+        let userAnswers = [];
+
+        function showView(view) {
+            document.getElementById('view-start').style.display = 'none';
+            document.getElementById('view-quiz').style.display = 'none';
+            document.getElementById('view-results').style.display = 'none';
+
+            document.getElementById('tab-start').classList.remove('active');
+            document.getElementById('tab-quiz').classList.remove('active');
+            document.getElementById('tab-results').classList.remove('active');
+
+            if (view === 'start') {
+                document.getElementById('view-start').style.display = 'block';
+                document.getElementById('tab-start').classList.add('active');
+            } else if (view === 'quiz') {
+                document.getElementById('view-quiz').style.display = 'block';
+                document.getElementById('tab-quiz').classList.add('active');
+            } else if (view === 'results') {
+                document.getElementById('view-results').style.display = 'block';
+                document.getElementById('tab-results').classList.add('active');
+            }
+        }
+
+        function startQuiz() {
+            currentIndex = 0;
+            userAnswers = [];
+            showView('quiz');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questions[currentIndex];
+            document.getElementById('quiz-meta').innerText = `Pregunta ${currentIndex + 1} de ${questions.length}`;
+            document.getElementById('quiz-section').innerText = q.sec;
+            document.getElementById('quiz-sub').innerText = q.sub ? q.sub : "EVALUACIÓN";
+            document.getElementById('quiz-question').innerText = q.q;
+
+            const progress = ((currentIndex) / questions.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+        }
+
+        function answerQuestion(isYes) {
+            userAnswers.push({
+                question: questions[currentIndex],
+                answer: isYes
+            });
+
+            currentIndex++;
+
+            if (currentIndex < questions.length) {
+                loadQuestion();
+            } else {
+                calculateResults();
+            }
+        }
+
+        function calculateResults() {
+            const total = userAnswers.length;
+            const yesCount = userAnswers.filter(a => a.answer === true).length;
+            const percentage = Math.round((yesCount / total) * 100);
+
+            const scoreBadge = document.getElementById('score-badge');
+            const resultLevel = document.getElementById('result-level');
+            const resultDot = document.getElementById('result-dot');
+            const resultText = document.getElementById('result-text');
+            const brechasList = document.getElementById('brechas-list');
+
+            scoreBadge.innerText = `${percentage}%`;
+
+            if (percentage >= 80) {
+                resultLevel.innerText = "Nivel de Cumplimiento ALTO";
+                resultDot.style.backgroundColor = "#2ccf6d";
+                resultText.innerText = `Cumplimiento del ${percentage}% según la Ley 29783. Tu empresa cuenta con un SGSST sólido.`;
+            } else if (percentage >= 50) {
+                resultLevel.innerText = "Nivel de Cumplimiento MEDIO";
+                resultDot.style.backgroundColor = "#f39c12";
+                resultText.innerText = `Cumplimiento del ${percentage}%. Existen varios lineamientos que deben subsanarse.`;
+            } else {
+                resultLevel.innerText = "Nivel de Cumplimiento BAJO";
+                resultDot.style.backgroundColor = "#ff4d4d";
+                resultText.innerText = `Cumplimiento del ${percentage}%. Se requiere intervención inmediata para evitar sanciones.`;
+            }
+
+            // Listar brechas (Respuestas NO)
+            brechasList.innerHTML = "";
+            const brechas = userAnswers.filter(a => a.answer === false);
+
+            if (brechas.length === 0) {
+                brechasList.innerHTML = "<li>¡Excelente! No se detectaron brechas de cumplimiento.</li>";
+            } else {
+                brechas.forEach(b => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>[${b.question.sec}]</strong> ${b.question.q}`;
+                    brechasList.appendChild(li);
+                });
+            }
+
+            showView('results');
+        }
+        
+    </script>
+        
+    <script src="preguntas_compromiso.js"></script>
+	<script src="preguntas_politica.js"></script>
+	<script src="preguntas_planeamiento.js"></script>
+	<script src="preguntas_implementacion.js"></script>
+	<script src="preguntas_evaluacion.js"></script>
+	<script src="preguntas_medicion.js"></script>
+	<script src="preguntas_control.js"></script>
+	<script src="preguntas_revision.js"></script>
+	<script src="main.js"></script>
+	
+  </body>
+</html>
